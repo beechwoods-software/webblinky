@@ -7,7 +7,6 @@ After boot the ready led will blink slowly until the wifi is connect to an AP
 
 ## Setup
 This repository has submodules. Either clone with the --recursive flag or do a git submodule init ; git submodule update after cloning
-There is currently no dynamic configuration for the application, configuration data is hard coded.
 
 ### local.conf
 This repository optionally supports the creation of a local.conf file in the root directory of the application.
