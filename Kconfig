@@ -1,0 +1,14 @@
+
+    
+rsource "onboarding/Kconfig"
+rsource "sensors/Kconfig"
+
+module = WEBBLINKY
+module-str = Web Blinky
+module-help = Web Blinky demo
+
+source "subsys/logging/Kconfig.template.log_config"
+
+source "Kconfig.zephyr"
+
+

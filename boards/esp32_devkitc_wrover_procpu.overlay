@@ -1,0 +1,24 @@
+
+&wifi {
+        status = "okay";
+};
+
+/ {
+    leds {
+      compatible = "gpio-leds";
+      onboard_led: led_ready {
+      	gpios = <&gpio0 2 ( GPIO_ACTIVE_HIGH) > ;
+      };
+    };
+    buttons {
+        compatible = "gpio-keys";
+  	    button0: button_0 {
+     	    gpios = < &gpio0 0 (GPIO_PULL_UP | GPIO_ACTIVE_LOW) >;
+     	    label = "button 0";
+   	    };
+    };
+    zephyr,user {
+        buttons = <&button0>;
+        ready-led = <&onboard_led>;
+    };
+};

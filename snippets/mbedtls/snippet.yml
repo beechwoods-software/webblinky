@@ -1,0 +1,3 @@
+name: mbedtls
+append:
+    EXTRA_CONF_FILE: mbedtls.conf
