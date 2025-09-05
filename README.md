@@ -15,6 +15,6 @@ The local.conf may contain the following lines
 - CONFIG_PRECONFIG_WIFI is a boolean which if true sets the initial SSID and PSK to the values in CONFIG_ONBOARDING_WIFI_SSID and CONFIG_ONBOARDING_WIFI_PSK if false it will default to bringing up the wifi as an AP for configuration
 - CONFIG_ONBOARDING_WIFI_SSID=\"<Your SSID\>"
 - CONFIG_ONBOARDING_WIFI_PSK="\<PreShared Key to Your SSID\>"
-
+- CONFIG_ONBOARDING_WIFI_AP_SSID is set to webblinky, change this if you prefer a differnt AP advertised.  
 Please do not check local.conf into the repository as it contains site specific proriaitary information.
 
