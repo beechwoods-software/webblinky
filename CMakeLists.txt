@@ -1,9 +1,10 @@
 cmake_minimum_required(VERSION 3.20.0)
 set(CMAKE_VERBOSE_MAKEFILE 1)
+set(DEVICE_CERT_PREFIX webblinky_demo)
+set(SERVER_NAME golioth)
 
-set(COMPATIBLE_BOARDS qemu_cortex_m3 qemu_cortex_r5 qemu_xtensa qemu_x86_64 esp32_devkitc esp32c3_devkitm esp32c3_devkitm/esp32c3 rpi_pico/rp2040/w  nrf52_adafruit_feather teensy41 adafruit_feather_nrf52840 esp32_devkitc/esp32/procpu  esp32c3_devkitm/esp32c3esp32c6_devkitc esp32c6_devkitc/esp32c6 rpi_pico2/rp2350a/m33/w)
+set(COMPATIBLE_BOARDS qemu_cortex_m3 qemu_cortex_r5 qemu_xtensa qemu_x86_64 esp32_devkitc  esp32_devkitc/esp32/procpu esp32c3_devkitm esp32c3_devkitm/esp32c3 esp32c6_devkitc  esp32c6_devkitc/esp32c6/hpcore rpi_pico/rp2040/w  rpi_pico2/rp2350a/m33/w nrf52_adafruit_feather teensy41 adafruit_feather_nrf52840 )
 
-set(WIFI_BOARDS qemu_cortex_r5 qemu_xtensa esp32_devkitc_wroom esp32_devkitc_wrover esp32c3_devkitm rpi_pico/rp2040/w  esp32_devkitc_wroom/esp32/procpu esp32_devkitc_wrover/esp32/procpu esp32c3_devkitm/esp32c3 esp32c6_devkitc esp32c6_devkitc/esp32c6 rpi_pico2/rp2350a/m33/w)
 if(NOT ${BOARD} IN_LIST COMPATIBLE_BOARDS)
     message(FATAL_ERROR "App $ENV{UROS_APP} not compatible with board ${BOARD}")
 endif()

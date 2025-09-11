@@ -1,5 +1,6 @@
 /*
  * Copyright (c) 2024 Beechwoods Software
+ * SPDX-License-Identifier: Apache 2.0
  *
  */
 
@@ -10,18 +11,11 @@
 #include "ob_nvs_data.h"
 #include <zephyr/sys/reboot.h>
 #include "ready_led.h"
-#ifdef CONFIG_USE_BUTTON
 #include "button.h"
-#endif // CONFIG_USE_BUTTON
-#ifdef CONFIG_ONBOARDING_OTA
 #include "ob_ota.h"
-#endif // CONFIG_ONBOARDING_OTA
 #ifdef CONFIG_ONBOARDING_NFC
 #include "ob_nfc_tag.h"
 #endif
-#ifdef CONFIG_ONBOARDING_CAPTIVE_PORTAL
-#include "ob_captive_portal.h"
-#endif // CONFIG_ONBOARDING_CAPTIVE_PORTAL
 
 #define SECONDS_UNTIL_RESET 6
 
@@ -215,7 +209,7 @@ button_handler(button_callback_data_t * cbd)
     if(end > 6000) {
 #ifdef CONFIG_ONBOARDING_NVS
       LOG_ERR("Factory reset");
-      nvs_data_factory_reset();
+      ob_nvs_data_factory_reset();
 #endif // CONFIG_ONBOARDING_NVS
       sys_reboot(SYS_REBOOT_WARM);
     }
@@ -246,17 +240,13 @@ main(void)
   init_nfc_onboarding_module();
   start_nfc_onboarding_listener();
 #endif // CONFIG_ONBOARDING_NFC
-#ifdef CONFIG_ONBOARDING_WEB_SERVER
-  init_web_server();
-   rc = ob_ws_register_web_page(APP_WEB_PATH_NAME, APP_WEB_TITLE, app_get, app_post, true);
-#ifdef CONFIG_ONBOARDING_CAPTIVE_PORTAL
-   ob_cp_init();
-#endif // CONFIG_ONBOARDING_CAPTIVE_PORTAL
-#endif //CONFIG_ONBOARDING_WEB_SERVER
 #ifdef CONFIG_ONBOARDING_WIFI
   ob_wifi_init();
 #endif
 #ifdef CONFIG_ONBOARDING_WEB_SERVER
+  init_web_server();
+   rc = ob_ws_register_web_page(APP_WEB_PATH_NAME, APP_WEB_TITLE, app_get, app_post, true);
+
   start_web_server();
 #endif //CONFIG_ONBOARDING_WEB_SERVER
 #ifdef CONFIG_ONBOARDING_OTA
