@@ -12,7 +12,9 @@
 #include <zephyr/sys/reboot.h>
 #include "ready_led.h"
 #include "button.h"
+#ifdef CONFIG_ONBOARDING_OTA
 #include "ob_ota.h"
+#endif // CONFIG_ONBOARDING_OTA
 #ifdef CONFIG_ONBOARDING_NFC
 #include "ob_nfc_tag.h"
 #endif
