@@ -29,7 +29,7 @@ function(add_dependencies_ifdef feature_toggle)
 endfunction()
 
 
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=c17 -pendantic -Werror")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=c17 -pendantic -Werror -ggdb")
 set(gen_dir ${ZEPHYR_BINARY_DIR}/include/generated/)
 
 if (${CONFIG_ONBOARDING_CERTS_GENERATE_CERTS} )
