@@ -8,6 +8,7 @@
 #include <zephyr/net/socket.h>
 #include "ob_wifi.h"
 #include "ob_web_server.h"
+#include "ob_captive_portal.h"
 #include "ob_nvs_data.h"
 #include <zephyr/sys/reboot.h>
 #include "ready_led.h"
@@ -17,6 +18,9 @@
 #endif // CONFIG_ONBOARDING_OTA
 #ifdef CONFIG_ONBOARDING_NFC
 #include "ob_nfc_tag.h"
+#endif
+#ifdef CONFIG_ONBOARDING_BLUETOOTH
+#include "onboarding_bluetooth.h"
 #endif
 
 #define SECONDS_UNTIL_RESET 6
@@ -231,6 +235,7 @@ main(void)
   int rc =0;
   printf("Starting webblinky\n");
   LOG_DBG("Webblinky");
+  ob_nvs_data_init();
 #ifdef  CONFIG_USE_READY_LED
   ready_led_init();
   ready_led_set(READY_LED_DELAY_LONG);
@@ -238,6 +243,9 @@ main(void)
 #ifdef CONFIG_USE_BUTTON
   button_init(button_handler);
 #endif //CONFIG_USE_BUTTON
+#ifdef CONFIG_ONBOARDING_BLUETOOTH
+  bluetooth_init();
+#endif  
 #ifdef CONFIG_ONBOARDING_NFC
   init_nfc_onboarding_module();
   start_nfc_onboarding_listener();
@@ -247,8 +255,10 @@ main(void)
 #endif
 #ifdef CONFIG_ONBOARDING_WEB_SERVER
   init_web_server();
-   rc = ob_ws_register_web_page(APP_WEB_PATH_NAME, APP_WEB_TITLE, app_get, app_post, true);
-
+#ifdef CONFIG_ONBOARDING_CAPTIVE_PORTAL
+  ob_cp_init();
+#endif // CONFIG_ONBOARDING_CAPTIVE_PORTAL
+  rc = ob_ws_register_web_page(APP_WEB_PATH_NAME, APP_WEB_TITLE, app_get, app_post, true);
   start_web_server();
 #endif //CONFIG_ONBOARDING_WEB_SERVER
 #ifdef CONFIG_ONBOARDING_OTA

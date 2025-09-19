@@ -5,61 +5,9 @@
 &wifi {
         status = "okay";
 };
-&adc {
-      status = "okay";
-};
 */
 
-
-/ {
-
-    leds {
-        compatible = "gpio-leds";
-        led_ready: led_ready {
-            gpios = <&gpio0 13 ( GPIO_ACTIVE_HIGH) > ;
-        };
-    };
-    buttons {
-        compatible = "gpio-keys";
-        button0: button_0 {
-     	    gpios = < &gpio0 4 (GPIO_PULL_UP | GPIO_ACTIVE_LOW) >;
-     	    label = "button 0";
-   	    };
-   	    button1: button_1 {
-            gpios = < &gpio0 5 (GPIO_PULL_UP | GPIO_ACTIVE_LOW) >;
-     	    label = "button 1";
-        };
-    };
-    motion_sensors {
-        compatible = "gpio-keys";
-   	motionsensor: motionsensor {
-   	    gpios = < &gpio0 20 (GPIO_PULL_DOWN | GPIO_ACTIVE_HIGH) >;
-	    label = "motion sensor";
-        };	   
-    };
-    aliases {
-//        sensor = &adc;
-    };
-    zephyr,user {
-//      io-channels = <&adc 0>;
-    };
-};
-
     
-&i2c0 {
-    pinctrl-0 = <&i2c0_default>; // default is SDA = GP4, SCL = GP5
-    pinctrl-names = "default";
-    status = "okay";
-    clock-frequency = <I2C_BITRATE_STANDARD>;
-
-    st25dv: st25dv@a6 {
-        compatible = "st,st25dv";
-        reg = <0xa6>;
-        interrupt-gpios = <&gpio0 15 GPIO_ACTIVE_LOW>;
-        status = "okay";
-    };
-};
-
 
 &flash0 {
 	status = "okay";
