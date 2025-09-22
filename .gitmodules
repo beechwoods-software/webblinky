@@ -1,6 +1,6 @@
 [submodule "sensors"]
 	path = sensors
-	url = git@github.com:raintamer/sensors.git
+	url = git@github.com:beechwoods-software/sensors.git
 [submodule "onboarding"]
 	path = onboarding
-	url = git@github.com:raintamer/onboarding.git
+	url = git@github.com:beechwoods-software/onboarding.git
