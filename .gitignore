@@ -53,3 +53,12 @@ dkms.conf
 
 # debug information files
 *.dwo
+
+# Project-specific ignores
+.venv/
+.west/
+local.conf
+build/
+external/
+onboarding/
+sensors/

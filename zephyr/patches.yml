@@ -1,0 +1,10 @@
+patches:
+  - path: 00_prico_w_ready_led.patch
+    sha256sum: bf59cface0ea69d7d8ade77f5832793e7cafcf21a054ad4a93db5def7fc5f1a9
+    module: external/zephyr
+    author: "Tristen Pierson"
+    email: "tpierson@electrohire.com"
+    date: 2025-09-22
+    upstreamable: false
+    comments: |
+      Add Pico W LED helpers to airoc_wifi.c
