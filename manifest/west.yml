@@ -4,10 +4,7 @@ manifest:
   remotes:
     - name: beechwoods
       url-base: https://github.com/beechwoods-software
-
-    - name: rpi-openocd
-      url-base: https://github.com/raspberrypi
-
+      
     - name: zephyr-project
       url-base: https://github.com/zephyrproject-rtos
     
@@ -27,13 +24,7 @@ manifest:
           - hal_infineon
           - hal_rpi_pico
           - zephyr
-  
-    - name: openocd
-      remote: rpi-openocd
-      repo-path: openocd
-      revision: 806fa3d187d1fd5d940701e701a695c2e3998c18
-      path: external/openocd
-      
+       
     - name: onboarding
       remote: beechwoods
       repo-path: onboarding

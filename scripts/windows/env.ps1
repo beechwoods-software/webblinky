@@ -3,11 +3,12 @@
 $PYTHON = 'python311'
 
 # --- Zephyr env ---------------------------------------------------------------
-$env:ZEPHYR_BASE = if (Test-Path .\external\zephyr) { (Resolve-Path .\external\zephyr).Path } else { '' }
+$env:WORKSPACE = (Resolve-Path (Join-Path $PSScriptRoot '..\..'))
+$env:ZEPHYR_BASE = "$env:WORKSPACE\external\zephyr"
 $env:ZEPHYR_TOOLCHAIN_VARIANT = 'zephyr'
-$env:OPENOCD_BASE = if (Test-Path .\external\openocd) { (Resolve-Path .\external\openocd).Path } else { '' }
-$env:OPENOCD_BIN = "$env:OPENOCD_BASE/bin/openocd.exe"
-$env:OPENOCD_SCRIPTS = "$env:OPENOCD_BASE/share/openocd/scripts"
+$env:OPENOCD_BASE = "$env:WORKSPACE\external\openocd"
+$env:OPENOCD_BIN = "$env:OPENOCD_BASE\bin\openocd.exe"
+$env:OPENOCD_SCRIPTS = "$env:OPENOCD_BASE\share\openocd\scripts"
 
 # Prefer the *user var* if set; otherwise keep existing env; otherwise use default.
 if ($ZEPHYR_SDK_INSTALL_DIR -and -not [string]::IsNullOrWhiteSpace($ZEPHYR_SDK_INSTALL_DIR)) {

@@ -1,4 +1,6 @@
-. .\win-env.ps1 
+. .\env.ps1 
+
+Push-Location $env:WORKSPACE
 
 Write-Host "Creating virtual environment..." -ForegroundColor Cyan
 & $PYTHON -m venv .venv
@@ -13,7 +15,7 @@ Write-Host "Installing west..." -ForegroundColor Cyan
 pip install west
 
 Write-Host "Setting up west enironment..." -ForegroundColor Cyan
-west init -l manifest
+west init -l .\manifest
 west update
 west packages pip --install
 west blobs fetch hal_infineon --allow-regex 'img/whd/resources/firmware/COMPONENT_43439/43439a0_bin.c' 
@@ -30,3 +32,5 @@ Write-Host "  west build -b <board> path\to\app" -ForegroundColor Yellow
 
 Write-Host "Press any key to exit"
 $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+
+Pop-Location
