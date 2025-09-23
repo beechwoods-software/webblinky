@@ -27,10 +27,7 @@ west sdk install -t arm-zephyr-eabi --install-dir "$env:ZEPHYR_SDK_INSTALL_DIR"
 # Exit the venv
 deactivate
 
-Write-Host "All done. You can now build Zephyr apps with:" -ForegroundColor Green
-Write-Host "  west build -b <board> path\to\app" -ForegroundColor Yellow
-
-Write-Host "Press any key to exit"
+Write-Host "All done. Press any key to exit." -ForegroundColor Green
 $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 
 Pop-Location

@@ -30,11 +30,7 @@ foreach ($pkg in $HOST_TOOLS) {
     scoop install $pkg
 }
 
-# --- Finished ---
-Write-Host "All done." -ForegroundColor Green
-Write-Host "You may need to open a new terminal (or sign out/in) for PATH changes to take effect in new processes."
-
-Write-Host "Press any key to exit"
+Write-Host "All done. Press any key to exit." -ForegroundColor Green
 $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 
 Pop-Location
