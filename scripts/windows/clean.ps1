@@ -2,9 +2,11 @@
 
 Push-Location $env:WORKSPACE
 
+Write-Host "Cleaning..." -ForegroundColor Cyan
+
 Remove-Item -Path 'build' -Recurse -Force
 
-Write-Host "Press any key to exit"
+Write-Host "All done. Press any key to exit." -ForegroundColor Green
 $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 
 Pop-Location

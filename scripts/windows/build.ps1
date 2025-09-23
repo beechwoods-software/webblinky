@@ -4,9 +4,11 @@ Push-Location $env:WORKSPACE
 
 & .\.venv\Scripts\Activate.ps1
 
-west build -p always -d build -b rpi_pico2/rp2350a/m33/w . -- -DOPENOCD="$env:OPENOCD_BIN" -DOPENOCD_DEFAULT_PATH="$env:OPENOCD_SCRIPTS" -DRPI_PICO_DEBUG_ADAPTER=cmsis-dap
+Write-Host "Building..." -ForegroundColor Cyan
 
-Write-Host "Press any key to exit"
+west build -p always -d build -b rpi_pico2/rp2350a/m33/w . -- -DRPI_PICO_DEBUG_ADAPTER=cmsis-dap
+
+Write-Host "All done. Press any key to exit." -ForegroundColor Green
 $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 
 Pop-Location

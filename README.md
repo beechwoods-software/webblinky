@@ -193,18 +193,6 @@ deactivate
 
 ---
 
-## Note on Infineon (AIROC) Driver
-
-Until the Infineon driver changes are fully merged upstream, the build uses a Zephyr fork/branch specified in the **west manifest**.
-
-Reference (already listed in the manifest):
-
-* [https://github.com/ThreeEights/zephyr/tree/airoc-spi-wifi](https://github.com/ThreeEights/zephyr/tree/airoc-spi-wifi)
-
-You do **not** need to fetch this manually—`west update` will resolve it per the manifest.
-
----
-
 ## Testing
 
 1. Connect UART to **GP0 (TX)** and **GP1 (RX)**, **BAUD = 115200**.
