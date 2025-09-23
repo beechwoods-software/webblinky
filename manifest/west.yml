@@ -1,0 +1,44 @@
+manifest:
+  version: 1.2
+
+  remotes:
+    - name: beechwoods
+      url-base: https://github.com/beechwoods-software
+      
+    - name: zephyr-project
+      url-base: https://github.com/zephyrproject-rtos
+    
+  projects:
+    - name: zephyr
+      remote: zephyr-project
+      repo-path: zephyr
+      revision: 71f6840a1b1b802437848157968b45cf621d104a
+      path: zephyr
+      import:
+        path-prefix: external
+        name-allowlist:
+          - cmsis_6
+          - hal_infineon
+          - hal_rpi_pico
+          - zephyr
+       
+    - name: onboarding
+      remote: beechwoods
+      repo-path: onboarding
+      revision: e48048b217d1adccc6bd425ed1537f344b0ff16f
+      path: onboarding
+      
+    - name: st25dv
+      remote: beechwoods
+      repo-path: st25dv
+      revision: 952205676cfd9af258dc56e046f17b607b3071a5
+      path: onboarding/st25dv
+    
+    - name: sensors
+      remote: beechwoods
+      repo-path: sensors
+      revision: 0a75132bfeaa5383c6fde677c0fe31b74b81f278
+      path: sensors
+      
+  self:
+    path: .
