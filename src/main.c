@@ -20,7 +20,7 @@
 #include "ob_nfc_tag.h"
 #endif
 #ifdef CONFIG_ONBOARDING_BLUETOOTH
-#include "onboarding_bluetooth.h"
+#include "ob_bluetooth.h"
 #endif
 
 #define SECONDS_UNTIL_RESET 6
